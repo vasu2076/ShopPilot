@@ -129,8 +129,8 @@ const Signup = () => {
               Sign in with Google
             </button>
   
-            <p className="signup-text">
-              Already have an account? <a href="/Signup">Sign up</a>
+          <p className="signup-text">
+              Already have an account? <a href="/login">Sign up</a>
             </p>
           </div>
         </div>
