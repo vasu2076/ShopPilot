@@ -130,7 +130,7 @@ const Signup = () => {
             </button>
   
             <p className="signup-text">
-              Already have an account? <a href="/login">Sign up</a>
+              Already have an account? <a href="/Signup">Sign up</a>
             </p>
           </div>
         </div>
