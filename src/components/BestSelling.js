@@ -27,7 +27,7 @@ function Bestselling() {
   fetchDataFromApi(`/products`).then((res) => {
     if (Array.isArray(res)) {
       const shuffled = [...res].sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 8); // get 8 random items
+      const selected = shuffled.slice(0, 8); 
       setproducts(selected);
     } else {
       console.error("Expected array but got:", res);

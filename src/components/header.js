@@ -44,8 +44,9 @@ function Header() {
               <>
                 <Button className='circle'><FaRegUser/> </Button>
                 <div className='ml-auto carttab'>
-                    <span className='price'>RS 500.00</span>
+                    <Link to={"/cart"}>
                     <Button className='circle'><MdOutlineShoppingCart /></Button>
+                    </Link>
                 </div>
               </>
             )}

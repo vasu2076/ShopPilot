@@ -1,36 +1,41 @@
-import { FaRegWindowMinimize } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import { FaRegWindowMinimize, FaPlus } from "react-icons/fa";
 import Button from '@mui/material/Button';  
 import { useEffect, useState } from "react";
 
- const Quantitybox = (props) =>{
+const Quantitybox = (props) => {
+  const { quantity, item, initialQuantity = 1 } = props;
 
-    const [inputval , setinputval]  =useState(1)
-    const minus = ()=>{
-        if(inputval>1){
-            setinputval(inputval-1)
-        }
+  const [inputval, setInputval] = useState(initialQuantity);
+
+  useEffect(() => {
+    if (initialQuantity && inputval !== initialQuantity) {
+      setInputval(initialQuantity);
     }
-    const plus = ()=>{
-        setinputval(inputval + 1)
+  }, [initialQuantity]);
+
+  const minus = () => {
+    if (inputval > 1) {
+      setInputval(inputval - 1);
     }
+  };
 
-   useEffect(() => {
-    if (typeof props.quantity === 'function') {
-        props.quantity(props.item, inputval); // only one unified handler
+  const plus = () => {
+    setInputval(inputval + 1);
+  };
+
+  useEffect(() => {
+    if (typeof quantity === 'function') {
+      quantity(item, inputval); 
     }
-}, [inputval]);
+  }, [inputval]);
 
-
-    return(
-        <>
-        <div className='quantitydrop d-flex align-items-center'>
-        <Button onClick={minus}><FaRegWindowMinimize/></Button>
-        <input type='text' value={inputval}/>
-        <Button onClick={plus}><FaPlus/></Button>
+  return (
+    <div className='quantitydrop d-flex align-items-center'>
+      <Button onClick={minus}><FaRegWindowMinimize /></Button>
+      <input type='text' value={inputval} readOnly />
+      <Button onClick={plus}><FaPlus /></Button>
     </div>
-    </>
-    )
- }
+  );
+};
 
- export default Quantitybox
+export default Quantitybox;

@@ -12,6 +12,7 @@ import ProductDetails from './pages/productdetail';
 import { fetchDataFromApi } from './utils/api';
 import Login from './pages/login';
 import SignUp from './pages/SignUp';
+import Cart from './pages/addtocart';
 
 const mycontext = createContext();
 
@@ -70,6 +71,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login/>} />
           <Route path="/Signup" element={<SignUp/>} />
+          <Route path="/cart" element={<Cart/>} />
           <Route path="/" element={<Home />} />
           <Route path='/cat/:name' element={<Listing/>}/>
           <Route path='/product/:id' element={<ProductDetails/>}/>

@@ -8,28 +8,42 @@ import Tooltip from '@mui/material/Tooltip';
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { mycontext } from "../App";
-import { fetchDataFromApi } from "../utils/api";
-// import { fetchDataFromApi } from "../../utils/api";
+import { cartdata, fetchDataFromApi } from "../utils/api";
 
 const ProductDetails = () =>{
+    const context = useContext(mycontext);
     const {id} = useParams();
     const [productdata,setproductdata] = useState()
-    let  [cartfields,setcartfields] = useState({})
-    let  [productquantity,setproductquantity] = useState({})
+    let  [productquantity,setproductquantity] = useState(1)
     useEffect(() => {
   fetchDataFromApi(`/products/${id}`).then((res) => {
     setproductdata(res);
   });
-}, [id]); // Only re-run when `id` changes
+}, [id]); 
 
 
     const quantity=(val)=>{
        setproductquantity(val)
     }
+    const handleAddToCart = async () => {
+     if(context.islogin !== true){
+       alert("Please login to add items to cart.");
+     }else{
+        try {
+    const formData = {
+      productId: productdata?._id,
+      quantity: productquantity || 1,
+    };
 
-    
-
-    const context = useContext(mycontext);
+    const res = await cartdata("/cart/add", formData);
+    console.log("Cart added:", res);
+    alert("Product added to cart!");
+  } catch (error) {
+    console.error("Cart Add Error:", error);
+    alert("Failed to add product to cart.");
+  }
+};
+     }
 
     return (
         <>
@@ -72,9 +86,13 @@ const ProductDetails = () =>{
                        </div> 
 
                     <div className="d-flex align-items-center mt-4 gap-4">
-                       <Quantitybox quantity={quantity}/>
+                     <Quantitybox
+                        quantity={(item, val) => setproductquantity(val)}
+                        item={productdata}
+                        initialQuantity={productquantity}/>
+
                        <br/>
-                        <Button className="btn-blue btn-lg btn-big btn-round" ><FaCartShopping /> &nbsp; Add to cart</Button>
+                        <Button className="btn-blue btn-lg btn-big btn-round" onClick={handleAddToCart}><FaCartShopping /> &nbsp; Add to cart</Button>
                         <Tooltip title="Add to Wishlist" placement="top">
                         <button className="btn-blue btn-lg btn-big btn-circle ml-4"><FaRegHeart/></button>
                         </Tooltip>
