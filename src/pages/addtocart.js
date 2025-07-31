@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cartshowdata, deleteData, fetchDataFromApi } from '../utils/api';
 import Dialog from '@mui/material/Dialog';
@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import { mycontext } from '../App';
 
 
 const Cart = () => {
@@ -26,6 +27,11 @@ const Cart = () => {
       setCartItems(res);
     });
   }, []);
+
+  const context = useContext(mycontext)
+   useEffect(()=>{
+        context.setIsHideSidebarAndHeader(false)
+    },[]);
 
   if (!cartItems || cartItems.length === 0) return <p className="text-center mt-5">Cart is empty.</p>;
 

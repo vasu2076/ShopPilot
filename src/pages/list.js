@@ -10,13 +10,12 @@ import MenuItem from '@mui/material/MenuItem';
 import { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { useParams } from 'react-router-dom';
-// import { fetchDataFromApi } from '../../utils/api';
-// import { mycontext } from "../../App";
-// import { useContext } from "react";
+import { useContext } from "react";
 import SideBar from '../components/slidebar';
 import Bestselling from '../components/BestSelling';
 import ProductItem from '../components/productitem';
 import { catData } from '../utils/api';
+import { mycontext } from '../App';
 
 
 const Listing = () => {
@@ -42,13 +41,10 @@ const Listing = () => {
         }
     },[name])
 
-    // const context = useContext(mycontext);
-    //  const viewProductDetails = (_id) => {
-    //    context.setisOpenProductModel({
-    //     _id:_id,
-    //     open:true
-    //    });
-    //  };
+  const context = useContext(mycontext)
+   useEffect(()=>{
+        context.setIsHideSidebarAndHeader(false)
+    },[]);
 
     return (
         <>

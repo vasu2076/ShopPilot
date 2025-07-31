@@ -217,6 +217,7 @@ nav .navpart1 .catWrapper{
 .catWrapper .sidebarnav.open{
   height: auto;
   opacity: 1;
+
   visibility: inherit;
 }
 .catWrapper .sidebarnav ul li{

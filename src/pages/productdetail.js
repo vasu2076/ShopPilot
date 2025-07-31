@@ -22,6 +22,10 @@ const ProductDetails = () =>{
 }, [id]); 
 
 
+   useEffect(()=>{
+        context.setIsHideSidebarAndHeader(false)
+    },[]);
+
     const quantity=(val)=>{
        setproductquantity(val)
     }
@@ -41,7 +45,7 @@ const ProductDetails = () =>{
   } catch (error) {
     console.error("Cart Add Error:", error);
     alert("Failed to add product to cart.");
-  }
+  } 
 };
      }
 
