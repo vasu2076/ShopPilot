@@ -61,6 +61,6 @@ export const cartdata = async (url, formData) => {
 }
 
 export const deleteData = async (url) => {
-  const { data } = await axios.delete(`http://localhost:4000${url}`);
+  const { data } = await axios.delete(`https://deshbord-backend.vercel.app${url}`);
   return data;
 };
