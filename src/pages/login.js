@@ -9,6 +9,7 @@ const Login = () => {
     const context = useContext(mycontext)
     const [inputIndex, setInputIndex] = useState(null);
       const [Email, setEmail] = useState("");
+      const [name, setname] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -22,8 +23,9 @@ const Login = () => {
       const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginData("/signup/login", { Email, password });
+      const response = await loginData("/signup/login", { Email, password ,name});
       alert("Login Success",response)
+      localStorage.setItem("user", JSON.stringify(response.user));
         context.setislogin(true);  
        navigate("/"); 
     } catch (err) {
@@ -34,10 +36,8 @@ const Login = () => {
 
   return (
     <>
-
            <div className="login-container">
       <div className="login-card">
-        
         <div className="login-form">
           <h1>Welcome back</h1>
           <p className="subtext">Please enter your details</p>

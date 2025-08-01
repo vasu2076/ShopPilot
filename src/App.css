@@ -275,6 +275,73 @@ nav .navpart2 ul li a:hover{
   background: #f0faff;
   color: #209CEE;
 }
+.myacc-wrapper{
+  margin-left: 20px !important;
+  height: 50px !important;
+  color: #000 !important;
+}
+.myacc {
+    text-align: left !important;
+    color: #0858f7 !important;
+}
+
+.user-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #0858f7;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.user-img .rounded-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-img .rounded-circle img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.user-img.lg{
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.myacc .use-info {
+    padding-left: 10px;
+}
+
+.myacc .use-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #292929;
+    line-height: 15px !important;
+}
+
+.myacc .use-info p {
+    margin-top: 0px;
+    font-size: 12px;
+    color: #000;
+    opacity: 0.7;
+    line-height: 15px !important; 
+}
+.logout{
+  color: red !important;
+}
+
 
 /* hero section */
 .hero-slider-wrapper {
